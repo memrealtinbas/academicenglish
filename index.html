@@ -14,10 +14,12 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grote
 main{max-width:640px;margin:0 auto;padding:32px 16px 56px}
 h1{font-size:2rem;font-weight:800;margin:0 0 6px}
 .sub{color:var(--mute);margin:0 0 28px}
+.back{display:inline-block;margin-bottom:18px;color:var(--acc);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
 .list{display:grid;gap:12px}
 .item{display:block;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:18px 20px;color:inherit;text-decoration:none}
 .item:hover{border-color:var(--acc)}
-.item:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.item:focus-visible,.back:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 .item b{display:block;font-size:1.15rem;color:var(--acc)}
 .item span{color:var(--mute);font-size:.95rem}
 </style>
@@ -29,17 +31,17 @@ h1{font-size:2rem;font-weight:800;margin:0 0 6px}
 
 <div class="list">
 
-<!-- QUIZ LIST START -->
+<!-- COLLECTION LIST START -->
 
-<a class="item" href="list-1/">
-<b>YDS/YÖKDİL Kelime Listesi 1</b>
-<span>70 words · flashcards and a 30-question quiz</span>
+<a class="item" href="yds-yokdil/">
+<b>YDS/YÖKDİL</b>
+<span>Vocabulary lists · flashcards and quizzes</span>
 </a>
 
-<!-- TO ADD A NEW QUIZ: copy the 4 lines above (from <a ...> to </a>), paste them
+<!-- TO ADD A NEW COLLECTION: copy the 4 lines above (from <a ...> to </a>), paste them
      right below this comment, then change the folder name in href="..." and the two texts. -->
 
-<!-- QUIZ LIST END -->
+<!-- COLLECTION LIST END -->
 
 </div>
 </main>
