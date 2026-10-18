@@ -101,10 +101,10 @@ var quiz=null;
 function cls(g){return g<=7?0:g<=10?1:2}
 var NEAR=[[0,3],[0,6],[1,7],[8,4],[10,7]];
 function near(a,b){return NEAR.some(function(p){return(p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a)})}
-function pick(list){var u=[],k={};shuffle(list).forEach(function(x){if(!k[x.tr]){k[x.tr]=1;u.push(x.tr)}});return u}
+function uniqTr(list){var u=[],k={};shuffle(list).forEach(function(x){if(!k[x.tr]){k[x.tr]=1;u.push(x.tr)}});return u}
 function makeQ(t){var c=cls(t.g);
-var d=pick(T.filter(function(x){return cls(x.g)===c&&x.tr!==t.tr&&!near(t.g,x.g)&&(c===1||Math.abs(x.g-t.g)>=2)}));
-if(d.length<3){d=d.concat(pick(T.filter(function(x){return cls(x.g)===0&&x.tr!==t.tr&&!near(t.g,x.g)&&d.indexOf(x.tr)<0})))}
+var d=uniqTr(T.filter(function(x){return cls(x.g)===c&&x.tr!==t.tr&&!near(t.g,x.g)&&(c===1||Math.abs(x.g-t.g)>=2)}));
+if(d.length<3){d=d.concat(uniqTr(T.filter(function(x){return cls(x.g)===0&&x.tr!==t.tr&&!near(t.g,x.g)&&d.indexOf(x.tr)<0})))}
 return{en:t.en,ans:t.tr,opts:shuffle([t.tr].concat(d.slice(0,3)))}}
 function startQuiz(){quiz={qs:shuffle(T).slice(0,30).map(makeQ),i:0,score:0,miss:[],done:false};drawQ()}
 function drawQ(){var q=quiz,root=$("qz");
