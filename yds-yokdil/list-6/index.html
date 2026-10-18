@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YDS/YÖKDİL Kelime Listesi 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f4f7;--card:#fff;--ink:#222b36;--mute:#697685;--line:#d6dce3;--acc:#41586f;--accink:#fff;--ok:#2f7d5b;--okbg:#e5f3ec;--bad:#a8483c;--badbg:#f7e7e4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}}
+:root[data-theme="dark"]{--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.5rem;font-weight:800;margin:4px 0 14px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs button{flex:1;padding:11px;border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:.9rem;margin-bottom:8px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .2s}
+.fc{width:100%;min-height:240px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:24px;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+.fc .w{font-size:2.2rem;font-weight:800}
+.fc .tr{font-size:2rem;font-weight:800;color:var(--acc)}
+.fc .hint,.fc .syn{color:var(--mute);font-size:.95rem}
+.row{display:flex;gap:8px;margin-top:14px}
+.btn{flex:1;padding:12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+.q{font-size:2rem;font-weight:800;text-align:center;margin:10px 0 20px}
+.opts{display:grid;gap:10px}
+.opt{padding:14px 16px;text-align:left;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:1.05rem;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{margin-top:14px;min-height:24px;font-weight:600}
+.res{text-align:center}
+.score{font-size:3rem;font-weight:800;color:var(--acc);margin:8px 0}
+.miss{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:6px 16px;margin:16px 0;max-height:320px;overflow-y:auto}
+.miss div{padding:8px 0;border-bottom:1px solid var(--line)}
+.miss div:last-child{border:0}
+.back{display:inline-block;margin-bottom:6px;color:var(--acc);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../">‹ YDS/YÖKDİL</a>
+<h1>YDS/YÖKDİL Kelime Listesi 6</h1>
+<div class="tabs" role="tablist">
+<button role="tab" id="t-fc" aria-selected="true">Kartlar (66)</button>
+<button role="tab" id="t-qz" aria-selected="false">Test (30 soru)</button>
+</div>
+
+<section id="fc-s">
+<div class="meta"><span id="fc-n"></span><span>Çevirmek için dokun · ← → ile gez</span></div>
+<div class="bar"><i id="fc-b"></i></div>
+<button class="fc" id="fc" aria-live="polite"></button>
+<div class="row">
+<button class="btn" id="prev">Önceki</button>
+<button class="btn" id="shuf">Karıştır</button>
+<button class="btn p" id="next">Sonraki</button>
+</div>
+<div class="row"><button class="btn p" id="go-q">Teste geç</button></div>
+</section>
+
+<section id="qz-s" class="hide">
+<div id="qz"></div>
+</section>
+</main>
+<script>
+var RAW="0|Addictive|Bağımlılık yapıcı;0|Habit-forming|Alışkanlık oluşturan;0|Obsessive|Takıntılı;0|Compulsive|Zorlayıcı;1|Poisonous|Zehirli;1|Venomous|Zehirli;1|Toxic|Zehirli;1|Lethal|Ölümcül;2|Harmful|Zararlı;2|Detrimental|Zararlı;2|Adverse|Olumsuz;3|Evil|Kötü;3|Malicious|Kötü niyetli;3|Maleficent|Kötü niyetli;4|Hostile|Düşmanca;4|Belligerent|Kavgacı;4|Aggressive|Agresif;5|Counterfeit|Sahte;5|Fake|Sahte;5|Illegitimate|Gayrimeşru;6|Prejudiced|Önyargılı;6|Biased|Önyargılı;6|Partial|Taraflı;6|One-sided|Tek taraflı;6|Unfair|Haksız;7|Random|Rastgele;7|Arbitrary|Rastgele;7|Accidental|Kazara;7|Haphazard|Kazara;8|Immediate|Acil;8|Instant|Hızlı;8|Rapid|Hızlı;8|Swift|Hızlı;8|Prompt|Çabuk;9|Groundbreaking|Çığır açan;9|Revolutionary|Devrimci;9|Pioneering|Öncü;9|Avant-garde|Öncü;9|Cutting-edge|Son teknoloji;10|Pirate|Korsan;10|Corsair|Korsan;11|Elucidate|Aydınlatmak;11|Illuminate|Aydınlatmak;11|Enlighten|Aydınlanmak;11|Illustrate|Açıklamak;11|Clarify|Açıklamak;12|Impede|Engellemek;12|Obstruct|Tıkamak;12|Hinder|Engellemek;12|Inhibit|Engellemek;13|Cease|Kesmek;13|Terminate|Sonlandırmak;13|Halt|Durdurmak;13|Suspend|Askıya almak;14|Deal with|Uğraşmak;14|Cope with|Baş etmek;14|Handle|Ele almak;14|Manage|Üstesinden gelmek;15|Surpass|Aşmak;15|Exceed|Aşmak;15|Excel|Aşmak;15|Pass|Geçmek;16|Immigrate|Göç etmek;16|Settle|Yerleşmek;16|Relocate|Yerini değiştirmek;16|Colonize|Kolonileştirmek";
+var T=RAW.split(";").map(function(r){var p=r.split("|");return{g:+p[0],en:p[1],tr:p[2]}});
+var $=function(i){return document.getElementById(i)};
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function show(tab){var f=tab==="fc";$("fc-s").classList.toggle("hide",!f);$("qz-s").classList.toggle("hide",f);$("t-fc").setAttribute("aria-selected",f);$("t-qz").setAttribute("aria-selected",!f);if(!f&&!quiz)startQuiz()}
+$("t-fc").onclick=function(){show("fc")};$("t-qz").onclick=function(){show("qz")};$("go-q").onclick=function(){show("qz")};
+
+/* Flashcards */
+var deck=T.slice(),ci=0,flipped=false;
+function drawCard(){var t=deck[ci],b=$("fc");
+$("fc-n").textContent=(ci+1)+" / "+deck.length;$("fc-b").style.width=((ci+1)/deck.length*100)+"%";
+if(!flipped){b.innerHTML='<div class="w"></div><div class="hint">Türkçesi için dokun</div>';b.firstChild.textContent=t.en}
+else{var syn=T.filter(function(x){return x.tr===t.tr&&x.en!==t.en&&x.g===t.g}).map(function(x){return x.en});
+b.innerHTML='<div class="tr"></div><div class="hint"></div><div class="syn"></div>';
+b.children[0].textContent=t.tr;b.children[1].textContent=t.en;
+b.children[2].textContent=syn.length?"Aynı anlam: "+syn.join(", "):""}}
+function move(d){ci=(ci+d+deck.length)%deck.length;flipped=false;drawCard()}
+$("fc").onclick=function(){flipped=!flipped;drawCard()};
+$("prev").onclick=function(){move(-1)};$("next").onclick=function(){move(1)};
+$("shuf").onclick=function(){deck=shuffle(T);ci=0;flipped=false;drawCard()};
+document.addEventListener("keydown",function(e){if($("fc-s").classList.contains("hide"))return;
+if(e.key==="ArrowRight")move(1);else if(e.key==="ArrowLeft")move(-1);else if(e.key===" "&&document.activeElement.tagName!=="BUTTON"){e.preventDefault();flipped=!flipped;drawCard()}});
+drawCard();
+
+/* Quiz: distractors come from other meaning groups of the same word type, never neighbouring groups */
+var quiz=null;
+function cls(g){return g<=9?0:g===10?1:2}
+var NEAR=[[0,2],[1,3],[2,4],[4,6],[10,5]];
+function near(a,b){return NEAR.some(function(p){return(p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a)})}
+function uniqTr(list){var u=[],k={};shuffle(list).forEach(function(x){if(!k[x.tr]){k[x.tr]=1;u.push(x.tr)}});return u}
+function makeQ(t){var c=cls(t.g);
+var d=uniqTr(T.filter(function(x){return cls(x.g)===c&&x.tr!==t.tr&&!near(t.g,x.g)&&(c===1||Math.abs(x.g-t.g)>=2)}));
+if(d.length<3){d=d.concat(uniqTr(T.filter(function(x){return cls(x.g)===0&&x.tr!==t.tr&&!near(t.g,x.g)&&d.indexOf(x.tr)<0})))}
+return{en:t.en,ans:t.tr,opts:shuffle([t.tr].concat(d.slice(0,3)))}}
+function startQuiz(){quiz={qs:shuffle(T).slice(0,30).map(makeQ),i:0,score:0,miss:[],done:false};drawQ()}
+function drawQ(){var q=quiz,root=$("qz");
+if(q.i>=q.qs.length){var m=q.miss.map(function(x){return"<div><b>"+x.en+"</b> = "+x.ans+"</div>"}).join("");
+root.innerHTML='<div class="res"><div>Sonuç</div><div class="score">'+q.score+' / '+q.qs.length+'</div>'+(q.miss.length?'<div>Yanlış yaptıkların</div><div class="miss">'+m+'</div>':'<div>Hepsi doğru!</div>')+'<div class="row"><button class="btn" id="again">Yeni 30 soru</button><button class="btn p" id="tofc">Kartlara dön</button></div></div>';
+$("again").onclick=startQuiz;$("tofc").onclick=function(){show("fc")};return}
+var cur=q.qs[q.i];
+root.innerHTML='<div class="meta"><span>Soru '+(q.i+1)+' / '+q.qs.length+'</span><span>Doğru: '+q.score+'</span></div><div class="bar"><i style="width:'+(q.i/q.qs.length*100)+'%"></i></div><div class="q"></div><div class="opts"></div><div class="fb" aria-live="polite"></div><div class="row hide" id="nx"><button class="btn p" id="nxb"></button></div>';
+root.querySelector(".q").textContent=cur.en;
+var box=root.querySelector(".opts");
+cur.opts.forEach(function(o){var b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=function(){pick(b,o)};box.appendChild(b)})}
+function pick(btn,o){var q=quiz,cur=q.qs[q.i],all=document.querySelectorAll(".opt"),fb=document.querySelector(".fb");
+all.forEach(function(b){b.disabled=true;if(b.textContent===cur.ans)b.classList.add("ok")});
+if(o===cur.ans){q.score++;fb.textContent="Doğru!"}else{btn.classList.add("bad");q.miss.push(cur);fb.textContent="Doğru cevap: "+cur.ans}
+var last=q.i===q.qs.length-1;$("nx").classList.remove("hide");$("nxb").textContent=last?"Sonucu gör":"Sonraki soru";
+$("nxb").onclick=function(){q.i++;drawQ()};$("nxb").focus()}
+</script>
+</body>
+</html>
