@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TOEFL TPT 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f4f7;--card:#fff;--ink:#222b36;--mute:#697685;--line:#d6dce3;--acc:#41586f;--accink:#fff;--ok:#2f7d5b;--okbg:#e5f3ec;--bad:#a8483c;--badbg:#f7e7e4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}}
+:root[data-theme="dark"]{--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.5rem;font-weight:800;margin:4px 0 14px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs button{flex:1;padding:11px;border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:.9rem;margin-bottom:8px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .2s}
+.fc{width:100%;min-height:240px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:24px;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+.fc .w{font-size:2.2rem;font-weight:800}
+.fc .tr{font-size:2rem;font-weight:800;color:var(--acc)}
+.fc .hint,.fc .syn{color:var(--mute);font-size:.95rem}
+.row{display:flex;gap:8px;margin-top:14px}
+.btn{flex:1;padding:12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+.q{font-size:2rem;font-weight:800;text-align:center;margin:10px 0 20px}
+.opts{display:grid;gap:10px}
+.opt{padding:14px 16px;text-align:left;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:1.05rem;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{margin-top:14px;min-height:24px;font-weight:600}
+.res{text-align:center}
+.score{font-size:3rem;font-weight:800;color:var(--acc);margin:8px 0}
+.miss{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:6px 16px;margin:16px 0;max-height:320px;overflow-y:auto}
+.miss div{padding:8px 0;border-bottom:1px solid var(--line)}
+.miss div:last-child{border:0}
+.back{display:inline-block;margin-bottom:6px;color:var(--acc);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../">‹ TOEFL</a>
+<h1>TOEFL TPT 1</h1>
+<div class="tabs" role="tablist">
+<button role="tab" id="t-fc" aria-selected="true">Kartlar (177)</button>
+<button role="tab" id="t-qz" aria-selected="false">Test (30 soru)</button>
+</div>
+
+<section id="fc-s">
+<div class="meta"><span id="fc-n"></span><span>Çevirmek için dokun · ← → ile gez</span></div>
+<div class="bar"><i id="fc-b"></i></div>
+<button class="fc" id="fc" aria-live="polite"></button>
+<div class="row">
+<button class="btn" id="prev">Önceki</button>
+<button class="btn" id="shuf">Karıştır</button>
+<button class="btn p" id="next">Sonraki</button>
+</div>
+<div class="row"><button class="btn p" id="go-q">Teste geç</button></div>
+</section>
+
+<section id="qz-s" class="hide">
+<div id="qz"></div>
+</section>
+</main>
+<script>
+var RAW="N|society|Civilizations|Complex societies;N|adv|Developments|Advancements;N|comm|Inquiry|Request for information;N|pref|Preference|Choice;N|comm|Recommendations|Suggestions;N|size|Urbanization|Growth of cities;N|system|Infrastructure|Basic physical systems;N|access|Availability|Accessibility;N||Behaviors|Ways of acting;N|mind|Consciousness|Awareness;N|mind|Cognition|Mental processing;N|people|Researchers|Investigators;N|comm|Abstract|Summary of a study;N|involve|Participation|Involvement;N|adv,create|Innovation|Novel improvement;N|access|Democratization|Making equal access;N|wealth|Possessions|Property;N|wealth|Generosity|Giving nature;N||Agriculture|Farming;N|system,society|Structures|Organizations;N|wealth|Contributions|Additions;N|place|Facility|Building;N|size|Reduction|Decrease;N|compare|Counterparts|Equivalent items;N|bio|Circadian|Daily biological rhythm;N|people|Conservationists|Environmental protectors;N|create,comm|Initiatives|New plans;N|being|Existence|Being;N|mind,pref|Judgement|Opinion;N|involve|Registration|Enrollment;N|people|Scholars|Experts;N|bio|Exposure|Contact with light;N|create|Establishment|Creation;N||Medium|Means of expression;N||Functions|Purposes;N|wealth|Lavishness|Extravagance;N|size|Concentration|Accumulation;N|involve|Collaboration|Joint effort;N|system,comm|Database|Information collection;N||Evidence|Proof;N||Sportswear|Athletic clothing;N|adapt|Adaptation|Adjustment;N|compare|Contrast|Difference;N|events|Incidents|Occurrences;N|events|Implications|Consequences;N|people|Freelance|Independent worker;N|adv|Traction|Momentum;N|adapt|Flexibility|Adaptability;N|mind,pref|Biases|Inclinations;N|comm|Solutions|Answers;N|place|Auditorium|Large hall;N|origin|Backgrounds|Origins;N|manage|Maintenance|Upkeep;N|events|Disruptions|Interruptions;N|manage|Reliability|Dependability;N||Marvel|Wonder;N|bio|Sanitation|Health;N|size,adv|Expansion|Growing size;N|wealth,origin|Legacy|Inheritance;N|place|Reservation|Pre-booked spot;N|comm|Brochure|Promotional pamphlet;N|adapt|Adjustments|Small changes;N|being|Predators|Hunters;N|people,society,being|Individuals|People;N|manage|Responsibility|Accountability;N|people,manage|Regulators|Authorities;N|system|Platforms|Systems;N||Overhead|Operating costs;N|involve|Intervention|Stepping in;N|mind|Heuristics|Mental shortcuts;N|adv|Progress|Development;N|manage|Management|Handling;N|comm|Orientation|Introduction;N|involve|Assistance|Help;N|adv|Renovations|Improvements;V|arrange|Organize|Arrange;V|get|Forfeit|Give up;V||Disrupt|Interfere;V|less|Mitigate|Lessen;V|verify|Recognize|Acknowledge;V|arrange,make|Establish|Set up;V|get|Secure|Obtain;V||Coexist|Live together;V||Exhibit|Show;V||Accommodate|Adjust to;V|verify|Confirm|Verify;V|make|Generate|Produce;V|arrange|Prioritize|Rank by importance;V|move|Transport|Carry;V|move|Navigate|Direct travel;V|move|Circulate|Move around;V|less|Underestimate|Value too low;V||Rebound|Recover;R|degree|Significantly|Greatly;R|degree|Intensely|Strongly;R|logic|Irrationally|Illogically;R|logic|Rationally|Logically;R||Regularly|Frequently;R||Meticulously|Carefully;R||Densely|Closely packed;J|prod|Fertile|Productive;J|complex|Sophisticated|Advanced;J|imp|Significant|Important;J|time|Rescheduled|Planned for a later time;J|imp|Notable|Remarkable;J|host|Hospitable|Welcoming;J|feel|Delighted|Very pleased;J||Educational|Instructional;J|imp|Keynote|Main;J|join|Interactive|Involving participation;J|view|Projected|Displayed;J||Accessible|Easily reached;J|chg|Transformed|Changed;J|custom|Ceremonial|Ritualistic;J|chg|Redistributing|Reallocating;J||Asserting|Stating;J|join,same|Mutual|Shared;J|view|Perceived|Viewed;J|imp|Emerging|Becoming prominent;J|imp|Crucial|Essential;J||Dietary|Related to food;J||External|Outside;J||Inferred|Concluded from evidence;J|depth|Profound|Deep;J|chg|Adapted|Adjusted;J|imp|Imperative|Necessary;J||Artificial|Man-made;J|done|Implemented|Put into effect;J|time|Forthcoming|Upcoming;J|steady,ext|Extended|Prolonged;J|steady|Permanent|Lasting;J|useful|Practical|Functional;J|chg|Revolutionizing|Fundamentally changing;J|money|Affordable|Inexpensive;J|land|Indigenous|Native to a land;J|chg|Reinforcing|Strengthening;J|feel|Fascinating|Captivating;J|rule|Prohibited|Forbidden;J|chg|Revived|Restored;J|money|Commercial|Business-related;J|skill|Fluent|Proficient speaker;J|time|Scheduled|Planned;J|host|Inhospitable|Unfriendly;J|depth,ext|Extensive|Wide-reaching;J||Labor-intensive|Requiring much work;J||Sustainable|Environmentally sound;J|done|Finalized|Completed;J|land|Migratory|Moving seasonally;J|steady|Continuous|Uninterrupted;J||Ambiguous|Unclear;J|steady|Consistent|Steady;J|time|Semiannual|Twice a year;J|psy|Behavioral|Relating to behavior;J|steady|Systematic|Methodical;J|same|Equivalent|Equal;J|join,feel|Participating|Engaging;J|useful,prod,done|Effective|Producing results;J|useful|Beneficial|Helpful;J|feel|Enthusiastic|Eager;J|chg|Influencing|Impacting;J|chg|Exchanged|Swapped;J|steady,regl|Routine|Regular;J|skill|Mastered|Became expert in;J|imp|Essential|Vital;J||Extraterrestrial|Non-earthly;J|host|Habitable|Liveable;J|care|Vigilant|Watchful;J|complex|Intricate|Complex;J|join|Intervening|Getting involved;J|custom,steady|Traditional|Customary;J||Characterized|Distinguished by;J|rule,regl|Regulatory|Controlling;J|psy|Cognitive|Related to thinking;J|care|Risk-averse|Avoiding risk;J|join|Volunteered|Offered services;J||Addressing|Dealing with;J|psy|Unihemispheric|One-sided brain";
+var T=RAW.split(";").map(function(r){var p=r.split("|");return{c:p[0],t:p[1]?p[1].split(","):[],en:p[2],tr:p[3]}});
+var $=function(i){return document.getElementById(i)};
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function show(tab){var f=tab==="fc";$("fc-s").classList.toggle("hide",!f);$("qz-s").classList.toggle("hide",f);$("t-fc").setAttribute("aria-selected",f);$("t-qz").setAttribute("aria-selected",!f);if(!f&&!quiz)startQuiz()}
+$("t-fc").onclick=function(){show("fc")};$("t-qz").onclick=function(){show("qz")};$("go-q").onclick=function(){show("qz")};
+
+/* Flashcards */
+var deck=T.slice(),ci=0,flipped=false;
+function drawCard(){var t=deck[ci],b=$("fc");
+$("fc-n").textContent=(ci+1)+" / "+deck.length;$("fc-b").style.width=((ci+1)/deck.length*100)+"%";
+if(!flipped){b.innerHTML='<div class="w"></div><div class="hint">Tanım için dokun</div>';b.firstChild.textContent=t.en}
+else{var syn=T.filter(function(x){return x.tr===t.tr&&x.en!==t.en&&x.g===t.g}).map(function(x){return x.en});
+b.innerHTML='<div class="tr"></div><div class="hint"></div><div class="syn"></div>';
+b.children[0].textContent=t.tr;b.children[1].textContent=t.en;
+b.children[2].textContent=syn.length?"Aynı anlam: "+syn.join(", "):""}}
+function move(d){ci=(ci+d+deck.length)%deck.length;flipped=false;drawCard()}
+$("fc").onclick=function(){flipped=!flipped;drawCard()};
+$("prev").onclick=function(){move(-1)};$("next").onclick=function(){move(1)};
+$("shuf").onclick=function(){deck=shuffle(T);ci=0;flipped=false;drawCard()};
+document.addEventListener("keydown",function(e){if($("fc-s").classList.contains("hide"))return;
+if(e.key==="ArrowRight")move(1);else if(e.key==="ArrowLeft")move(-1);else if(e.key===" "&&document.activeElement.tagName!=="BUTTON"){e.preventDefault();flipped=!flipped;drawCard()}});
+drawCard();
+
+/* Quiz: distractors come from other meaning groups of the same word type, never neighbouring groups */
+var quiz=null;
+function uniqTr(list){var u=[],k={};shuffle(list).forEach(function(x){if(!k[x.tr]){k[x.tr]=1;u.push(x.tr)}});return u}
+function shares(a,b){return a.some(function(g){return b.indexOf(g)>=0})}
+function makeQ(t){
+var d=uniqTr(T.filter(function(x){return x.c===t.c&&x.tr!==t.tr&&!shares(t.t,x.t)}));
+return{en:t.en,ans:t.tr,opts:shuffle([t.tr].concat(d.slice(0,3)))}}
+function startQuiz(){quiz={qs:shuffle(T).slice(0,30).map(makeQ),i:0,score:0,miss:[],done:false};drawQ()}
+function drawQ(){var q=quiz,root=$("qz");
+if(q.i>=q.qs.length){var m=q.miss.map(function(x){return"<div><b>"+x.en+"</b> = "+x.ans+"</div>"}).join("");
+root.innerHTML='<div class="res"><div>Sonuç</div><div class="score">'+q.score+' / '+q.qs.length+'</div>'+(q.miss.length?'<div>Yanlış yaptıkların</div><div class="miss">'+m+'</div>':'<div>Hepsi doğru!</div>')+'<div class="row"><button class="btn" id="again">Yeni 30 soru</button><button class="btn p" id="tofc">Kartlara dön</button></div></div>';
+$("again").onclick=startQuiz;$("tofc").onclick=function(){show("fc")};return}
+var cur=q.qs[q.i];
+root.innerHTML='<div class="meta"><span>Soru '+(q.i+1)+' / '+q.qs.length+'</span><span>Doğru: '+q.score+'</span></div><div class="bar"><i style="width:'+(q.i/q.qs.length*100)+'%"></i></div><div class="q"></div><div class="opts"></div><div class="fb" aria-live="polite"></div><div class="row hide" id="nx"><button class="btn p" id="nxb"></button></div>';
+root.querySelector(".q").textContent=cur.en;
+var box=root.querySelector(".opts");
+cur.opts.forEach(function(o){var b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=function(){pick(b,o)};box.appendChild(b)})}
+function pick(btn,o){var q=quiz,cur=q.qs[q.i],all=document.querySelectorAll(".opt"),fb=document.querySelector(".fb");
+all.forEach(function(b){b.disabled=true;if(b.textContent===cur.ans)b.classList.add("ok")});
+if(o===cur.ans){q.score++;fb.textContent="Doğru!"}else{btn.classList.add("bad");q.miss.push(cur);fb.textContent="Doğru cevap: "+cur.ans}
+var last=q.i===q.qs.length-1;$("nx").classList.remove("hide");$("nxb").textContent=last?"Sonucu gör":"Sonraki soru";
+$("nxb").onclick=function(){q.i++;drawQ()};$("nxb").focus()}
+</script>
+</body>
+</html>
