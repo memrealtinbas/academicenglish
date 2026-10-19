@@ -1,65 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>TOEFL – Academic English</title>
+<title>TOEFL TPT 3</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f2f4f7;--card:#fff;--ink:#222b36;--mute:#697685;--line:#d6dce3;--acc:#41586f;
+:root{--bg:#f2f4f7;--card:#fff;--ink:#222b36;--mute:#697685;--line:#d6dce3;--acc:#41586f;--accink:#fff;--ok:#2f7d5b;--okbg:#e5f3ec;--bad:#a8483c;--badbg:#f7e7e4;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root{--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}}
+:root[data-theme="dark"]{--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
-main{max-width:640px;margin:0 auto;padding:32px 16px 56px}
-h1{font-size:2rem;font-weight:800;margin:0 0 6px}
-.sub{color:var(--mute);margin:0 0 28px}
-.back{display:inline-block;margin-bottom:18px;color:var(--acc);text-decoration:none;font-weight:600}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.5rem;font-weight:800;margin:4px 0 14px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs button{flex:1;padding:11px;border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:.9rem;margin-bottom:8px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .2s}
+.fc{width:100%;min-height:240px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:24px;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+.fc .w{font-size:2.2rem;font-weight:800}
+.fc .tr{font-size:2rem;font-weight:800;color:var(--acc)}
+.fc .hint,.fc .syn{color:var(--mute);font-size:.95rem}
+.row{display:flex;gap:8px;margin-top:14px}
+.btn{flex:1;padding:12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+.q{font-size:2rem;font-weight:800;text-align:center;margin:10px 0 20px}
+.opts{display:grid;gap:10px}
+.opt{padding:14px 16px;text-align:left;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:1.05rem;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{margin-top:14px;min-height:24px;font-weight:600}
+.res{text-align:center}
+.score{font-size:3rem;font-weight:800;color:var(--acc);margin:8px 0}
+.miss{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:6px 16px;margin:16px 0;max-height:320px;overflow-y:auto}
+.miss div{padding:8px 0;border-bottom:1px solid var(--line)}
+.miss div:last-child{border:0}
+.back{display:inline-block;margin-bottom:6px;color:var(--acc);text-decoration:none;font-weight:600}
 .back:hover{text-decoration:underline}
-.list{display:grid;gap:12px}
-.item{display:block;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:18px 20px;color:inherit;text-decoration:none}
-.item:hover{border-color:var(--acc)}
-.item:focus-visible,.back:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.item b{display:block;font-size:1.15rem;color:var(--acc)}
-.item span{color:var(--mute);font-size:.95rem}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
 </style>
 </head>
 <body>
 <main>
-<a class="back" href="../">‹ Academic English</a>
-<h1>TOEFL</h1>
-<p class="sub">Vocabulary tests with English definitions</p>
-
-<div class="list">
-
-<!-- QUIZ LIST START -->
-
-<a class="item" href="tpt-1/">
-<b>TPT 1</b>
-<span>177 words · English definitions · flashcards and a 30-question quiz</span>
-</a>
-
-<a class="item" href="tpt-2/">
-<b>TPT 2</b>
-<span>75 words · English definitions · flashcards and a 30-question quiz</span>
-</a>
-
-<a class="item" href="spt-1/">
-<b>SPT 1</b>
-<span>138 words · English definitions · flashcards and a 30-question quiz</span>
-</a>
-
-<a class="item" href="spt-2/">
-<b>SPT 2</b>
-<span>77 words · English definitions · flashcards and a 30-question quiz</span>
-</a>
-
-<!-- TO ADD A NEW QUIZ: copy the 4 lines above (from <a ...> to </a>), paste them
-     right below this comment, then change the folder name in href="..." and the two texts. -->
-
-<!-- QUIZ LIST END -->
-
+<a class="back" href="../">‹ TOEFL</a>
+<h1>TOEFL TPT 3</h1>
+<div class="tabs" role="tablist">
+<button role="tab" id="t-fc" aria-selected="true">Kartlar (204)</button>
+<button role="tab" id="t-qz" aria-selected="false">Test (30 soru)</button>
 </div>
+
+<section id="fc-s">
+<div class="meta"><span id="fc-n"></span><span>Çevirmek için dokun · ← → ile gez</span></div>
+<div class="bar"><i id="fc-b"></i></div>
+<button class="fc" id="fc" aria-live="polite"></button>
+<div class="row">
+<button class="btn" id="prev">Önceki</button>
+<button class="btn" id="shuf">Karıştır</button>
+<button class="btn p" id="next">Sonraki</button>
+</div>
+<div class="row"><button class="btn p" id="go-q">Teste geç</button></div>
+</section>
+
+<section id="qz-s" class="hide">
+<div id="qz"></div>
+</section>
 </main>
+<script>
+var RAW="N|cons|Conservation|Protection;J|env|Endangered|Threatened;N||Activities|Actions;N|env,cons,pro|Conservationists|Environmentalists;N||Creatures|Animals;V|know|Educate|Teach;N||Importance|Significance;P|save|Preserving|Conserving;N|env|Ecosystems|Environments;V|know|Understand|Comprehend;N||Threats|Dangers;V|keep|Ensure|Guarantee;N||Generations|Descendants;N||Facility|Institution;N||Apartment|Flat;P||Designated|Assigned;J|calm|Peaceful|Calm;N|env|Environment|Surroundings;N||Patrons|Customers;V||Adhere|Comply;N|rule|Guidelines|Rules;P||Refraining|Abstaining;N||Conversations|Discussions;J||Electronic|Digital;V|mgmt|Conduct|Manage;V|chg|Proceed|Advance;J|calm|Serene|Tranquil;N||Cooperation|Collaboration;V|keep|Maintain|Preserve;P|judge|Concluded|Decided;N|force|Dynamics|Mechanics;J||Fast-moving|Rapid;N|wx,env|Atmosphere|Air;J|geo|Global|Worldwide;N||Contrast|Difference;N|wx|Temperatures|Heat levels;J|clim,geo|Polar|Arctic;J|clim,geo|Tropical|Equatorial;N|force,wx|Pressure|Force;V||Generate|Produce;N|area|Hemisphere|Half sphere;N|area,wx|Latitudes|Regions;N|wx|Cyclones|Storms;N|wx,force|Anticyclones|High-pressure systems;N|wx|Precipitation|Rainfall;N||Rotation|Revolution;J|steady|Uneven|Irregular;J||Seasonal|Periodic;N|wx,pro|Meteorologists|Forecasters;V||Predict|Forecast;N|wx|Climate|Weather;S|chg|Impacts|Affects;P||Warming|Heating;S|less|Reduces|Decreases;N||Masses|Bodies;V|less|Weaken|Diminish;P||Prolonged|Extended;J|sev|Extreme|Intense;N|wx|Heatwaves|Hot spells;N|wx|Rainfall|Precipitation;N|trade|Economics|Study of markets;N||Societies|Communities;V|mgmt|Allocate|Distribute;N|alloc,money|Resources|Assets;N|prod|Production|Manufacturing;N|alloc|Distribution|Allocation;N|prod|Consumption|Utilization;S|know|Examines|Inspects;N||Governments|Administrations;N|trade|Businesses|Companies;N||Individuals|Persons;N|trade|Marketplace|Market;V|goal|Aspire|Aim;N|fin,pro|Economists|Financial experts;N|fin,pro|Bankers|Financiers;P|get|Gaining|Acquiring;N|idea|Concepts|Notions;N|alloc,sd|Supply|Provision;N|sd|Demand|Need;N||Inflation|Price rise;N|work|Employment|Jobs;N|money|Benefits|Profits;J|mind|Informed|Educated;N|force|Forces|Powers;J||Dedicated|Devoted;N||Volunteers|Helpers;N|work,rule|Responsibilities|Duties;P|handle|Supervising|Overseeing;N||Demonstrations|Presentations;N|sched|Deadline|Target date;N|hist|Background|History;P|judge|Accepted|Approved;J|lead|Dominant|Leading;P|judge|Considered|Regarded;N|hist|Era|Period;P|judge|Marked|Characterized;J|lead|Groundbreaking|Pioneering;P||Experimented|Tested;N|design|Formats|Layouts;N|method|Techniques|Methods;N|media|Anthology|Collection;N|media|Episode|Installment;N|media|Narratives|Stories;J|lead|Influential|Prominent;P|change|Blended|Mixed;P|up|Provoking|Stimulating;N||Phenomenon|Occurrence;P|handle|Tackled|Addressed;P||Including|Containing;N||Gender|Sex;N|media|Broadcasts|Transmissions;N|media|Coverage|Reporting;N||Entertainers|Performers;P|handle|Navigated|Handled;N|adv|Innovation|Modernization;J||Commercial|Business;N|force|Pressures|Stresses;V|goal|Seek|Look for;V|attract|Appeal|Attract;P||Clashed|Conflicted;N|idea|Visions|Ideas;J|steady|Indelible|Lasting;N|rule|Standards|Criteria;N|media,sched|Programming|Scheduling;P|part|Contributing|Adding;N|adv|Evolution|Development;N|brain|Neuroplasticity|Brain adaptability;V|chg|Reorganize|Restructure;P|make|Forming|Creating;N|link|Connections|Links;R||Throughout|Across;V|chg|Adapt|Adjust;N|react|Response|Reaction;N|react|Stimulation|Activation;J|lead|Remarkable|Extraordinary;N||Capacity|Ability;J|imp|Crucial|Vital;J|mind|Cognitive|Mental;N||Acquisition|Attainment;J||Structural|Physical;N|brain|Neurons|Brain cells;P|up|Strengthening|Reinforcing;N|brain,link|Synapses|Junctions;J||Functional|Operational;N|design|Patterns|Designs;P||Underperforming|Lagging;N|area|Regions|Areas;P|handle|Processing|Handling;J|geo|Distant|Faraway;P|part|Engaging|Participating;N|pro|Training|Practice;V|chg|Enhance|Improve;J||Aerobic|Cardio;P|up|Boosting|Raising;N|bio,cons|Protein|Nutrient;N|enz|Fertilizer|Enhancer;N||Implications|Consequences;N|method|Strategies|Plans;V|attract,chg|Promote|Encourage;N|vigor|Resilience|Hardiness;P||Leveraging|Utilizing;N|pro|Practitioners|Professionals;N|vigor|Vitality|Vigor;P|save|Composting|Recycling;N|cont|Bins|Containers;N|cont|Receptacles|Holders;J||Uneaten|Unconsumed;N|mat|Contents|Materials inside;P|get|Collected|Gathered;N||Agriculture|Farming;P|change|Transforming|Converting;N|method|Process|Procedure;J|env|Sustainable|Eco-friendly;N|enz|Catalysts|Accelerators;N|mat|Substances|Materials;N|react|Reactions|Responses;R||Efficiently|Effectively;J|steady|Unchanged|Constant;J||Multiple|Numerous;N|enz|Enzymes|Biocatalysts;N|bio|Digestion|Breakdown of food;N|bio,method|Metabolism|Processing;N|trade|Industry|Commerce;J|imp|Essential|Crucial;N||Fuels|Energy sources;J||Powerful|Potent;V|less|Lower|Reduce;N|mat|Ingredients|Components;N|enz|Nanozymes|Artificial enzymes;J|man|Artificial|Synthetic;V||Mimic|Copy;J|steady|Stable|Steady;J|sev|Harsh|Severe;N|env|Conditions|Environment;N||Acidity|Sourness;J||Cheaper|Low cost;P|change|Tailored|Customized;N|tox|Pollutants|Contaminants;J|man|Industrial|Factory-related;N|tox|Waste|Refuse;N|tox|Pesticides|Chemicals;N||Dyes|Pigments;N|mat|Metals|Elements;J|env|Toxic|Poisonous";
+var T=RAW.split(";").map(function(r){var p=r.split("|");return{c:p[0],t:p[1]?p[1].split(","):[],en:p[2],tr:p[3]}});
+var $=function(i){return document.getElementById(i)};
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function show(tab){var f=tab==="fc";$("fc-s").classList.toggle("hide",!f);$("qz-s").classList.toggle("hide",f);$("t-fc").setAttribute("aria-selected",f);$("t-qz").setAttribute("aria-selected",!f);if(!f&&!quiz)startQuiz()}
+$("t-fc").onclick=function(){show("fc")};$("t-qz").onclick=function(){show("qz")};$("go-q").onclick=function(){show("qz")};
+
+/* Flashcards */
+var deck=T.slice(),ci=0,flipped=false;
+function drawCard(){var t=deck[ci],b=$("fc");
+$("fc-n").textContent=(ci+1)+" / "+deck.length;$("fc-b").style.width=((ci+1)/deck.length*100)+"%";
+if(!flipped){b.innerHTML='<div class="w"></div><div class="hint">Tanım için dokun</div>';b.firstChild.textContent=t.en}
+else{var syn=T.filter(function(x){return x.tr===t.tr&&x.en!==t.en&&x.g===t.g}).map(function(x){return x.en});
+b.innerHTML='<div class="tr"></div><div class="hint"></div><div class="syn"></div>';
+b.children[0].textContent=t.tr;b.children[1].textContent=t.en;
+b.children[2].textContent=syn.length?"Aynı anlam: "+syn.join(", "):""}}
+function move(d){ci=(ci+d+deck.length)%deck.length;flipped=false;drawCard()}
+$("fc").onclick=function(){flipped=!flipped;drawCard()};
+$("prev").onclick=function(){move(-1)};$("next").onclick=function(){move(1)};
+$("shuf").onclick=function(){deck=shuffle(T);ci=0;flipped=false;drawCard()};
+document.addEventListener("keydown",function(e){if($("fc-s").classList.contains("hide"))return;
+if(e.key==="ArrowRight")move(1);else if(e.key==="ArrowLeft")move(-1);else if(e.key===" "&&document.activeElement.tagName!=="BUTTON"){e.preventDefault();flipped=!flipped;drawCard()}});
+drawCard();
+
+/* Quiz: distractors come from other meaning groups of the same word type, never neighbouring groups */
+var quiz=null;
+function uniqTr(list){var u=[],k={};shuffle(list).forEach(function(x){if(!k[x.tr]){k[x.tr]=1;u.push(x.tr)}});return u}
+function shares(a,b){return a.some(function(g){return b.indexOf(g)>=0})}
+function makeQ(t){
+var d=uniqTr(T.filter(function(x){return x.c===t.c&&x.tr!==t.tr&&!shares(t.t,x.t)}));
+var FB={S:"V",R:"J"};
+if(d.length<3){d=d.concat(uniqTr(T.filter(function(x){return x.c===(FB[t.c]||"J")&&x.tr!==t.tr&&!shares(t.t,x.t)&&d.indexOf(x.tr)<0})))}
+return{en:t.en,ans:t.tr,opts:shuffle([t.tr].concat(d.slice(0,3)))}}
+function startQuiz(){quiz={qs:shuffle(T).slice(0,30).map(makeQ),i:0,score:0,miss:[],done:false};drawQ()}
+function drawQ(){var q=quiz,root=$("qz");
+if(q.i>=q.qs.length){var m=q.miss.map(function(x){return"<div><b>"+x.en+"</b> = "+x.ans+"</div>"}).join("");
+root.innerHTML='<div class="res"><div>Sonuç</div><div class="score">'+q.score+' / '+q.qs.length+'</div>'+(q.miss.length?'<div>Yanlış yaptıkların</div><div class="miss">'+m+'</div>':'<div>Hepsi doğru!</div>')+'<div class="row"><button class="btn" id="again">Yeni 30 soru</button><button class="btn p" id="tofc">Kartlara dön</button></div></div>';
+$("again").onclick=startQuiz;$("tofc").onclick=function(){show("fc")};return}
+var cur=q.qs[q.i];
+root.innerHTML='<div class="meta"><span>Soru '+(q.i+1)+' / '+q.qs.length+'</span><span>Doğru: '+q.score+'</span></div><div class="bar"><i style="width:'+(q.i/q.qs.length*100)+'%"></i></div><div class="q"></div><div class="opts"></div><div class="fb" aria-live="polite"></div><div class="row hide" id="nx"><button class="btn p" id="nxb"></button></div>';
+root.querySelector(".q").textContent=cur.en;
+var box=root.querySelector(".opts");
+cur.opts.forEach(function(o){var b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=function(){pick(b,o)};box.appendChild(b)})}
+function pick(btn,o){var q=quiz,cur=q.qs[q.i],all=document.querySelectorAll(".opt"),fb=document.querySelector(".fb");
+all.forEach(function(b){b.disabled=true;if(b.textContent===cur.ans)b.classList.add("ok")});
+if(o===cur.ans){q.score++;fb.textContent="Doğru!"}else{btn.classList.add("bad");q.miss.push(cur);fb.textContent="Doğru cevap: "+cur.ans}
+var last=q.i===q.qs.length-1;$("nx").classList.remove("hide");$("nxb").textContent=last?"Sonucu gör":"Sonraki soru";
+$("nxb").onclick=function(){q.i++;drawQ()};$("nxb").focus()}
+</script>
 </body>
 </html>
