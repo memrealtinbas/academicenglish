@@ -103,4 +103,23 @@ function shares(a,b){return a.some(function(g){return b.indexOf(g)>=0})}
 function makeQ(t){
 var d=uniqTr(T.filter(function(x){return x.c===t.c&&x.tr!==t.tr&&!shares(t.t,x.t)}));
 var FB={S:"V",R:"J",O:"R"};
-if(d.length<3){d=d.concat(uniqTr(T.filter(function(
+if(d.length<3){d=d.concat(uniqTr(T.filter(function(x){return x.c===(FB[t.c]||"J")&&x.tr!==t.tr&&!shares(t.t,x.t)&&d.indexOf(x.tr)<0})))}
+return{en:t.en,ans:t.tr,opts:shuffle([t.tr].concat(d.slice(0,3)))}}
+function startQuiz(){quiz={qs:shuffle(T).slice(0,30).map(makeQ),i:0,score:0,miss:[],done:false};drawQ()}
+function drawQ(){var q=quiz,root=$("qz");
+if(q.i>=q.qs.length){var m=q.miss.map(function(x){return"<div><b>"+x.en+"</b> = "+x.ans+"</div>"}).join("");
+root.innerHTML='<div class="res"><div>Sonuç</div><div class="score">'+q.score+' / '+q.qs.length+'</div>'+(q.miss.length?'<div>Yanlış yaptıkların</div><div class="miss">'+m+'</div>':'<div>Hepsi doğru!</div>')+'<div class="row"><button class="btn" id="again">Yeni 30 soru</button><button class="btn p" id="tofc">Kartlara dön</button></div></div>';
+$("again").onclick=startQuiz;$("tofc").onclick=function(){show("fc")};return}
+var cur=q.qs[q.i];
+root.innerHTML='<div class="meta"><span>Soru '+(q.i+1)+' / '+q.qs.length+'</span><span>Doğru: '+q.score+'</span></div><div class="bar"><i style="width:'+(q.i/q.qs.length*100)+'%"></i></div><div class="q"></div><div class="opts"></div><div class="fb" aria-live="polite"></div><div class="row hide" id="nx"><button class="btn p" id="nxb"></button></div>';
+root.querySelector(".q").textContent=cur.en;
+var box=root.querySelector(".opts");
+cur.opts.forEach(function(o){var b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=function(){pick(b,o)};box.appendChild(b)})}
+function pick(btn,o){var q=quiz,cur=q.qs[q.i],all=document.querySelectorAll(".opt"),fb=document.querySelector(".fb");
+all.forEach(function(b){b.disabled=true;if(b.textContent===cur.ans)b.classList.add("ok")});
+if(o===cur.ans){q.score++;fb.textContent="Doğru!"}else{btn.classList.add("bad");q.miss.push(cur);fb.textContent="Doğru cevap: "+cur.ans}
+var last=q.i===q.qs.length-1;$("nx").classList.remove("hide");$("nxb").textContent=last?"Sonucu gör":"Sonraki soru";
+$("nxb").onclick=function(){q.i++;drawQ()};$("nxb").focus()}
+</script>
+</body>
+</html>
