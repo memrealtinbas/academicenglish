@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IELTS 19 RL 2 (EN–TR)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f4f7;--card:#fff;--ink:#222b36;--mute:#697685;--line:#d6dce3;--acc:#41586f;--accink:#fff;--ok:#2f7d5b;--okbg:#e5f3ec;--bad:#a8483c;--badbg:#f7e7e4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}}
+:root[data-theme="dark"]{--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.5rem;font-weight:800;margin:4px 0 14px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs button{flex:1;padding:11px;border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:.9rem;margin-bottom:8px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .2s}
+.fc{width:100%;min-height:240px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:24px;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+.fc .w{font-size:2.2rem;font-weight:800}
+.fc .tr{font-size:2rem;font-weight:800;color:var(--acc)}
+.fc .hint,.fc .syn{color:var(--mute);font-size:.95rem}
+.row{display:flex;gap:8px;margin-top:14px}
+.btn{flex:1;padding:12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+.q{font-size:2rem;font-weight:800;text-align:center;margin:10px 0 20px}
+.opts{display:grid;gap:10px}
+.opt{padding:14px 16px;text-align:left;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:1.05rem;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{margin-top:14px;min-height:24px;font-weight:600}
+.res{text-align:center}
+.score{font-size:3rem;font-weight:800;color:var(--acc);margin:8px 0}
+.miss{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:6px 16px;margin:16px 0;max-height:320px;overflow-y:auto}
+.miss div{padding:8px 0;border-bottom:1px solid var(--line)}
+.miss div:last-child{border:0}
+.back{display:inline-block;margin-bottom:6px;color:var(--acc);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../">‹ IELTS</a>
+<h1>IELTS 19 RL 2 (EN–TR)</h1>
+<div class="tabs" role="tablist">
+<button role="tab" id="t-fc" aria-selected="true">Kartlar (88)</button>
+<button role="tab" id="t-qz" aria-selected="false">Test (30 soru)</button>
+</div>
+
+<section id="fc-s">
+<div class="meta"><span id="fc-n"></span><span>Çevirmek için dokun · ← → ile gez</span></div>
+<div class="bar"><i id="fc-b"></i></div>
+<button class="fc" id="fc" aria-live="polite"></button>
+<div class="row">
+<button class="btn" id="prev">Önceki</button>
+<button class="btn" id="shuf">Karıştır</button>
+<button class="btn p" id="next">Sonraki</button>
+</div>
+<div class="row"><button class="btn p" id="go-q">Teste geç</button></div>
+</section>
+
+<section id="qz-s" class="hide">
+<div id="qz"></div>
+</section>
+</main>
+<script>
+var RAW="V|time|predate|öncesine dayanmak;R|main|predominantly|ağırlıklı olarak;N|peo|inhabitant|sakin;J|imp,req|essential|temel;J|imp,top|unsurpassed|eşsiz;N|bad,conf|hardship|zorluk;J|hide|undetected|fark edilmemiş;J|avail,nav|navigable|geçilebilir;V|give|surrender|teslim olmak;N|conf,bad|retaliation|misilleme;V|use|resort to|başvurmak;N|peo,conf|opponent|rakip;V|up,help|boost|artırmak;J|pol,civ|diplomatic|siyasi;N|comm,rel|correspondence|yazışma;J|imp,req|pressing|acil;J|spec|distinct|farklı;J|imp|substantial|kayda değer;N|bad,conf|disruption|aksama;V|allow|condone|göz yummak;V|hon|glorify|övmek;V|down,rem|curtail|kısıtlamak;J|lim|hampered|engellenmiş;J|good|profited|faydalanmış;J|imp,req|indispensable|vazgeçilmez;N|peo,bad|culprit|suçlu;J|fost|emboldened|cesaretlenmiş;N|peo,auth|dignitary|üst düzey yetkili;J|org|concerted|eşgüdümlü;N|bad,conf|menace|tehdit;N|conf,bad|combat|çatışma;V|give,org|assign|tahsis etmek;V|chg|transform|dönüştürmek;V|est|establish|kurmak;V|hon|commemorate|anmak;J|pol,civ|municipal|belediyeye ait;N|fin|fundraising|bağış toplama;N|fin,adv|proceeds|gelir;N|loc|venue|mekân;V|give,sup|accommodate|barındırmak;N|show,comm|demonstration|sunum;J|lim|limited|kısıtlı;N|loc|grounds|arazi;N|grp|collection|koleksiyon;N|rel,comm|relationship|ilişki;V|show|highlight|vurgulamak;V|org|arrange|düzenlemek;V|think|consider|değerlendirmek;N|peo,auth|authorities|yetkililer;N|loc|region|bölge;N|topc|theme|tema;N|evnt|anniversary|yıl dönümü;N|opt,adv|opportunity|olanak;V|move|navigate|yönlendirmek;V|rem,down|eliminate|ortadan kaldırmak;V|rem,down|eradicate|yok etmek;J|main,imp|predominant|baskın;J|imp,req|significant|önemli;V|help,fost,sup|contribute|katkıda bulunmak;V|keep,sup|maintain|korumak;V|get|acquire|edinmek;V|req|require|gerektirmek;N|est,org|establishment|kuruluş;V|show|indicate|göstermek;V|hap|occur|meydana gelmek;V|req|involve|içermek;V|get|achieve|başarmak;V|down,rem|decline|azalmak;V|up,chg|expand|genişletmek;N|adv,fin|benefit|avantaj;N|eff|impact|etki;N|way|approach|yöntem;N|feat|feature|özellik;J|avail,nav|available|erişilebilir;J|spec|particular|belirli;J|fit|appropriate|uygun;N|topc,bad|concern|sorun;N|goal,way|purpose|amaç;V|act|participate|katılmak;V|fost,help|promote|teşvik etmek;V|give,sup,help|provide|sağlamak;V|sup,keep,help|support|desteklemek;V|show,think|identify|belirlemek;V|chg,up|develop|gelişmek;V|keep,sup|preserve|korumak;V|ca,hap|result in|yol açmak;V|org,act|carry out|yürütmek;V|est|set up|kurmak";
+var T=RAW.split(";").map(function(r){var p=r.split("|");return{c:p[0],t:p[1]?p[1].split(","):[],en:p[2],tr:p[3]}});
+var $=function(i){return document.getElementById(i)};
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function show(tab){var f=tab==="fc";$("fc-s").classList.toggle("hide",!f);$("qz-s").classList.toggle("hide",f);$("t-fc").setAttribute("aria-selected",f);$("t-qz").setAttribute("aria-selected",!f);if(!f&&!quiz)startQuiz()}
+$("t-fc").onclick=function(){show("fc")};$("t-qz").onclick=function(){show("qz")};$("go-q").onclick=function(){show("qz")};
+
+/* Flashcards */
+var deck=T.slice(),ci=0,flipped=false;
+function drawCard(){var t=deck[ci],b=$("fc");
+$("fc-n").textContent=(ci+1)+" / "+deck.length;$("fc-b").style.width=((ci+1)/deck.length*100)+"%";
+if(!flipped){b.innerHTML='<div class="w"></div><div class="hint">Tanım için dokun</div>';b.firstChild.textContent=t.en}
+else{var syn=T.filter(function(x){return x.tr===t.tr&&x.en!==t.en&&x.g===t.g}).map(function(x){return x.en});
+b.innerHTML='<div class="tr"></div><div class="hint"></div><div class="syn"></div>';
+b.children[0].textContent=t.tr;b.children[1].textContent=t.en;
+b.children[2].textContent=syn.length?"Aynı anlam: "+syn.join(", "):""}}
+function move(d){ci=(ci+d+deck.length)%deck.length;flipped=false;drawCard()}
+$("fc").onclick=function(){flipped=!flipped;drawCard()};
+$("prev").onclick=function(){move(-1)};$("next").onclick=function(){move(1)};
+$("shuf").onclick=function(){deck=shuffle(T);ci=0;flipped=false;drawCard()};
+document.addEventListener("keydown",function(e){if($("fc-s").classList.contains("hide"))return;
+if(e.key==="ArrowRight")move(1);else if(e.key==="ArrowLeft")move(-1);else if(e.key===" "&&document.activeElement.tagName!=="BUTTON"){e.preventDefault();flipped=!flipped;drawCard()}});
+drawCard();
+
+/* Quiz: distractors come from other meaning groups of the same word type, never neighbouring groups */
+var quiz=null;
+function uniqTr(list){var u=[],k={};shuffle(list).forEach(function(x){if(!k[x.tr]){k[x.tr]=1;u.push(x.tr)}});return u}
+function shares(a,b){return a.some(function(g){return b.indexOf(g)>=0})}
+function makeQ(t){
+var d=uniqTr(T.filter(function(x){return x.c===t.c&&x.tr!==t.tr&&!shares(t.t,x.t)}));
+var FB={S:"V",R:"J",O:"R"};
+if(d.length<3){d=d.concat(uniqTr(T.filter(function(
