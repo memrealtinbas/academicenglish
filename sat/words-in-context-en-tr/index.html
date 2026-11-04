@@ -51,7 +51,7 @@ button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 <a class="back" href="../">‹ SAT</a>
 <h1>Words in Context (EN–TR)</h1>
 <div class="tabs" role="tablist">
-<button role="tab" id="t-fc" aria-selected="true">Kartlar (241)</button>
+<button role="tab" id="t-fc" aria-selected="true">Kartlar (200)</button>
 <button role="tab" id="t-qz" aria-selected="false">Test (30 soru)</button>
 </div>
 
@@ -84,10 +84,8 @@ var deck=T.slice(),ci=0,flipped=false;
 function drawCard(){var t=deck[ci],b=$("fc");
 $("fc-n").textContent=(ci+1)+" / "+deck.length;$("fc-b").style.width=((ci+1)/deck.length*100)+"%";
 if(!flipped){b.innerHTML='<div class="w"></div><div class="hint">Tanım için dokun</div>';b.firstChild.textContent=t.en}
-else{var syn=T.filter(function(x){return x.tr===t.tr&&x.en!==t.en&&x.g===t.g}).map(function(x){return x.en});
-b.innerHTML='<div class="tr"></div><div class="hint"></div><div class="syn"></div>';
-b.children[0].textContent=t.tr;b.children[1].textContent=t.en;
-b.children[2].textContent=syn.length?"Aynı anlam: "+syn.join(", "):""}}
+else{b.innerHTML='<div class="tr"></div><div class="hint"></div>';
+b.children[0].textContent=t.tr;b.children[1].textContent=t.en;}}
 function move(d){ci=(ci+d+deck.length)%deck.length;flipped=false;drawCard()}
 $("fc").onclick=function(){flipped=!flipped;drawCard()};
 $("prev").onclick=function(){move(-1)};$("next").onclick=function(){move(1)};
@@ -96,14 +94,12 @@ document.addEventListener("keydown",function(e){if($("fc-s").classList.contains(
 if(e.key==="ArrowRight")move(1);else if(e.key==="ArrowLeft")move(-1);else if(e.key===" "&&document.activeElement.tagName!=="BUTTON"){e.preventDefault();flipped=!flipped;drawCard()}});
 drawCard();
 
-/* Quiz: distractors come from other meaning groups of the same word type, never neighbouring groups */
+/* Quiz */
 var quiz=null;
 function uniqTr(list){var u=[],k={};shuffle(list).forEach(function(x){if(!k[x.tr]){k[x.tr]=1;u.push(x.tr)}});return u}
-function shares(a,b){return a.some(function(g){return b.indexOf(g)>=0})}
 function makeQ(t){
-var d=uniqTr(T.filter(function(x){return x.c===t.c&&x.tr!==t.tr&&!shares(t.t,x.t)}));
-var FB={S:"V",R:"J"};
-if(d.length<3){d=d.concat(uniqTr(T.filter(function(x){return x.c===(FB[t.c]||"J")&&x.tr!==t.tr&&!shares(t.t,x.t)&&d.indexOf(x.tr)<0})))}
+var d=uniqTr(T.filter(function(x){return x.c===t.c&&x.tr!==t.tr}));
+if(d.length<3){d=d.concat(uniqTr(T.filter(function(x){return x.tr!==t.tr&&d.indexOf(x.tr)<0})))}
 return{en:t.en,ans:t.tr,opts:shuffle([t.tr].concat(d.slice(0,3)))}}
 function startQuiz(){quiz={qs:shuffle(T).slice(0,30).map(makeQ),i:0,score:0,miss:[],done:false};drawQ()}
 function drawQ(){var q=quiz,root=$("qz");
