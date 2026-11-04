@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Words in Context (EN–TR)</title>
+<title>Words in Context (EN–EN)</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f2f4f7;--card:#fff;--ink:#222b36;--mute:#697685;--line:#d6dce3;--acc:#41586f;--accink:#fff;--ok:#2f7d5b;--okbg:#e5f3ec;--bad:#a8483c;--badbg:#f7e7e4;
@@ -49,22 +49,22 @@ button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 <body>
 <main>
 <a class="back" href="../">‹ SAT</a>
-<h1>Words in Context (EN–TR)</h1>
+<h1>Words in Context (EN–EN)</h1>
 <div class="tabs" role="tablist">
-<button role="tab" id="t-fc" aria-selected="true">Kartlar (241)</button>
-<button role="tab" id="t-qz" aria-selected="false">Test (30 soru)</button>
+<button role="tab" id="t-fc" aria-selected="true">Cards (200)</button>
+<button role="tab" id="t-qz" aria-selected="false">Quiz (30 questions)</button>
 </div>
 
 <section id="fc-s">
-<div class="meta"><span id="fc-n"></span><span>Çevirmek için dokun · ← → ile gez</span></div>
+<div class="meta"><span id="fc-n"></span><span>Tap to view meaning · Use ← → to navigate</span></div>
 <div class="bar"><i id="fc-b"></i></div>
 <button class="fc" id="fc" aria-live="polite"></button>
 <div class="row">
-<button class="btn" id="prev">Önceki</button>
-<button class="btn" id="shuf">Karıştır</button>
-<button class="btn p" id="next">Sonraki</button>
+<button class="btn" id="prev">Previous</button>
+<button class="btn" id="shuf">Shuffle</button>
+<button class="btn p" id="next">Next</button>
 </div>
-<div class="row"><button class="btn p" id="go-q">Teste geç</button></div>
+<div class="row"><button class="btn p" id="go-q">Start Quiz</button></div>
 </section>
 
 <section id="qz-s" class="hide">
@@ -72,8 +72,8 @@ button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 </section>
 </main>
 <script>
-var RAW="J||Abundant|Bol, Çok miktarda;J||Accurate|Doğru, Kesin;V||Acknowledge|Kabul etmek, Tanımak;V||Adapt|Uyarlamak;J||Adequate|Yeterli;V||Advocate|Savunmak;J||Ambiguous|Belirsiz, Muğlak;V||Amend|Değiştirmek, Düzeltmek;V||Analyze|Analiz etmek, İncelemek;J||Apparent|Açık, Belirgin;V||Appreciate|Takdir etmek, Farkına varmak;J||Arduous|Zahmetli, Meşakkatli;V||Assert|İddia etmek;V||Assess|Değerlendirmek;V||Attain|Elde etmek, Ulaşmak;V||Attribute|Atfetmek;J||Authentic|Gerçek, Özgün;N||Benefit|Fayda, Yarar;N||Bias|Önyargı, Yanlılık;V||Bolster|Güçlendirmek;J||Brief|Kısa, Öz;J||Cautious|Temkinli, Dikkatli;V||Cease|Durdurmak, Sona ermek;V||Challenge|Sorgulamak, Meydan okumak;J||Characteristic|Karakteristik, Tipik;V||Clarify|Açıklığa kavuşturmak;J||Coherent|Tutarlı, Mantıklı;V||Coincide|Örtüşmek, Aynı zamana denk gelmek;V||Commence|Başlamak;J||Compelling|İkna edici, Güçlü;J||Comprehensive|Kapsamlı;V||Conceive|Tasarlamak, Hayal etmek;V||Conclude|Sonuca varmak;J||Concurrent|Eş zamanlı;V||Condense|Kısaltmak, Yoğunlaştırmak;V||Conduct|Yürütmek, Gerçekleştirmek;V||Confer|Vermek, Bahşetmek;V||Confirm|Doğrulamak;N||Conflict|Çelişki, Çatışma;V||Conform|Uymak;J||Consequent|Sonuç olarak ortaya çıkan;J||Considerable|Önemli ölçüde, Kayda değer;J||Consistent|Tutarlı;V||Constitute|Oluşturmak, Teşkil etmek;V||Constrain|Kısıtlamak;V||Contend|İleri sürmek, Savunmak;V||Contradict|Çelişmek, Aksini iddia etmek;J||Conventional|Geleneksel, Alışılagelmiş;V||Convey|İletmek, Aktarmak;J||Convincing|İkna edici;J||Crucial|Çok önemli, Hayati;V||Cultivate|Geliştirmek, Yetiştirmek;V||Decline|Azalmak, Gerilemek;V||Deduce|Çıkarım yapmak;J||Deficient|Eksik, Yetersiz;V||Demonstrate|Göstermek, Ortaya koymak;V||Denote|Belirtmek, İfade etmek;V||Depict|Betimlemek, Tasvir etmek;V||Derive|Türetmek, Elde etmek;V||Diminish|Azaltmak, Küçültmek;V||Disclose|Açığa çıkarmak;N||Discrepancy|Tutarsızlık, Farklılık;J||Discrete|Ayrı, Bağımsız;V||Discriminate|Ayırt etmek;V||Dispute|İtiraz etmek, Tartışmak;J||Distinct|Farklı, Belirgin;J||Diverse|Çeşitli;V||Dominate|Hâkim olmak, Egemen olmak;V||Elaborate|Ayrıntılandırmak;V||Eliminate|Ortadan kaldırmak;V||Emphasize|Vurgulamak;V||Enable|Olanak sağlamak;V||Encounter|Karşılaşmak;V||Enhance|Geliştirmek, Artırmak;J||Enormous|Muazzam, Çok büyük;V||Ensure|Güvence altına almak, Sağlamak;V||Establish|Ortaya koymak, Kurmak;J||Evident|Açık, Bariz;V||Exaggerate|Abartmak;V||Exceed|Aşmak;V||Exclude|Hariç tutmak;V||Exhibit|Sergilemek, Göstermek;V||Expand|Genişletmek;J||Explicit|Açık, Net;V||Exploit|Kullanmak, Faydalanmak;V||Facilitate|Kolaylaştırmak;J||Feasible|Uygulanabilir, Yapılabilir;V||Fluctuate|Dalgalanmak;J||Fundamental|Temel;V||Generate|Üretmek, Oluşturmak;J||Genuine|Gerçek, Samimi;N||Hypothesis|Hipotez, Varsayım;V||Identify|Belirlemek, Tanımlamak;V||Illustrate|Örneklemek, Açıklamak;V||Imply|İma etmek, Dolaylı olarak belirtmek;V||Incorporate|Dâhil etmek, İçermek;V||Indicate|Göstermek, Belirtmek;J||Inevitable|Kaçınılmaz;V||Infer|Çıkarım yapmak;J||Inherent|Doğasında bulunan, İçkin;J||Initial|İlk, Başlangıçtaki;J||Innovative|Yenilikçi;N||Insight|Kavrayış, Derin anlayış;V||Integrate|Bütünleştirmek;V||Interpret|Yorumlamak;J||Intricate|Karmaşık, Girift;V||Isolate|İzole etmek, Ayırmak;V||Justify|Gerekçelendirmek, Haklı çıkarmak;V||Maintain|Sürdürmek, Korumak;V||Manifest|Ortaya çıkarmak, Göstermek;J||Marginal|Önemsiz, Marjinal;J||Methodical|Sistematik, Yöntemli;V||Mimic|Taklit etmek;V||Modify|Değiştirmek, Düzenlemek;J||Notable|Dikkate değer;N||Notion|Kavram, Düşünce;J||Novel|Yeni, Özgün;V||Obtain|Elde etmek;J||Obvious|Açık, Bariz;V||Occur|Meydana gelmek;V||Omit|Atlamak, Hariç bırakmak;V||Perceive|Algılamak;V||Persist|Israrla devam etmek, Sürmek;J||Plausible|Makul, Akla yatkın;V||Portray|Betimlemek, Tasvir etmek;V||Precede|Önce gelmek;J||Predominant|Baskın, Hâkim;J||Preliminary|Ön hazırlık niteliğinde, İlk;V||Preserve|Korumak, Muhafaza etmek;V||Prevail|Üstün gelmek, Hâkim olmak;J||Prominent|Önde gelen, Belirgin;V||Promote|Teşvik etmek, Desteklemek;V||Propose|Öne sürmek, Teklif etmek;V||Provoke|Kışkırtmak, Tetiklemek;V||Qualify|Sınırlandırmak, Nitelendirmek;J||Radical|Köklü, Radikal;J||Rational|Akılcı, Mantıklı;V||Refine|İyileştirmek, Arıtmak;V||Reinforce|Pekiştirmek, Güçlendirmek;V||Reject|Reddetmek;J||Relevant|İlgili, Konuyla bağlantılı;J||Reluctant|İsteksiz, Gönülsüz;J||Remarkable|Olağanüstü, Dikkat çekici;V||Require|Gerektirmek;V||Resemble|Benzer olmak;V||Resolve|Çözmek, Karara bağlamak;V||Restrict|Kısıtlamak;V||Retain|Muhafaza etmek, Elinde tutmak;V||Reveal|Ortaya çıkarmak;J||Rigid|Katı, Esnek olmayan;J||Significant|Önemli, Kayda değer;J||Simultaneous|Eş zamanlı;J||Skeptical|Şüpheci;R||Solely|Yalnızca, Sadece;J||Stable|İstikrarlı, Sabit;J||Substantial|Önemli, Kayda değer;V||Substitute|Yerine koymak, İkame etmek;J||Subtle|İnce, Belirsiz;J||Sufficient|Yeterli;V||Supplement|Tamamlamak, Takviye etmek;V||Surpass|Geride bırakmak, Aşmak;V||Sustain|Sürdürmek, Devam ettirmek;V||Symbolize|Sembolize etmek, Temsil etmek;N||Tendency|Eğilim;J||Tentative|Geçici, Kesin olmayan;J||Theoretical|Kuramsal, Teorik;J||Thorough|Kapsamlı, Ayrıntılı;V||Transform|Dönüştürmek;J||Transparent|Şeffaf, Açık;V||Undermine|Zayıflatmak, Baltalamak;J||Underlying|Temel, Altta yatan;J||Unique|Eşsiz, Benzersiz;V||Utilize|Kullanmak, Yararlanmak;J||Valid|Geçerli, Sağlam;V||Vary|Değişmek, Farklılık göstermek;V||Verify|Doğrulamak;J||Viable|Uygulanabilir, Yaşayabilir;J||Widespread|Yaygın;V||Abandon|Terk etmek, Vazgeçmek;V||Accelerate|Hızlandırmak;V||Accumulate|Biriktirmek, Toplamak;J||Adverse|Olumsuz, Zararlı;V||Alleviate|Hafifletmek;V||Alter|Değiştirmek;J||Analogous|Benzer, Eşdeğer;V||Anticipate|Öngörmek, Beklemek;J||Arbitrary|Keyfî, Rastgele;J||Assertive|Kendinden emin, Atılgan;V||Attenuate|Zayıflatmak, Azaltmak;V||Consolidate|Birleştirmek, Pekiştirmek;J||Candid|Açık sözlü, Samimi;V||Coexist|Bir arada var olmak;V||Compensate|Telafi etmek;V||Complement|Tamamlamak;J||Conspicuous|Göze çarpan, Belirgin;V||Deteriorate|Kötüleşmek, Bozulmak;V||Dispel|Dağıtmak, Ortadan kaldırmak;V||Exacerbate|Kötüleştirmek, Şiddetlendirmek;V||Mitigate|Hafifletmek, Azaltmak;V||Substantiate|Kanıtlamak, Doğrulamak";
-var T=RAW.split(";").map(function(r){var p=r.split("|");return{c:p[0],t:p[1]?p[1].split(","):[],en:p[2],tr:p[3]}});
+var RAW="J||Abundant|Plentiful;J||Accurate|Precise;V||Acknowledge|Recognize;V||Adapt|Adjust;J||Adequate|Sufficient;V||Advocate|Support;J||Ambiguous|Unclear;V||Amend|Modify;V||Analyze|Examine;J||Apparent|Evident;V||Appreciate|Recognize;J||Arduous|Difficult;V||Assert|Claim;V||Assess|Evaluate;V||Attain|Achieve;V||Attribute|Ascribe;J||Authentic|Genuine;N||Benefit|Advantage;N||Bias|Prejudice;V||Bolster|Strengthen;J||Brief|Concise;J||Cautious|Careful;V||Cease|Stop;V||Challenge|Question;J||Characteristic|Typical;V||Clarify|Explain;J||Coherent|Logical;V||Coincide|Correspond;V||Commence|Begin;J||Compelling|Convincing;J||Comprehensive|Thorough;V||Conceive|Imagine;V||Conclude|Infer;J||Concurrent|Simultaneous;V||Condense|Shorten;V||Conduct|Carry out;V||Confer|Grant;V||Confirm|Verify;N||Conflict|Contradiction;V||Conform|Comply;J||Consequent|Resulting;J||Considerable|Substantial;J||Consistent|Uniform;V||Constitute|Form;V||Constrain|Restrict;V||Contend|Argue;V||Contradict|Oppose;J||Conventional|Traditional;V||Convey|Communicate;J||Convincing|Persuasive;J||Crucial|Essential;V||Cultivate|Develop;V||Decline|Decrease;V||Deduce|Infer;J||Deficient|Inadequate;V||Demonstrate|Illustrate;V||Denote|Indicate;V||Depict|Portray;V||Derive|Obtain;V||Diminish|Reduce;V||Disclose|Reveal;N||Discrepancy|Difference;J||Discrete|Separate;V||Discriminate|Distinguish;V||Dispute|Challenge;J||Distinct|Different;J||Diverse|Varied;V||Dominate|Control;V||Elaborate|Expand;V||Eliminate|Remove;V||Emphasize|Highlight;V||Enable|Allow;V||Encounter|Experience;V||Enhance|Improve;J||Enormous|Immense;V||Ensure|Guarantee;V||Establish|Demonstrate;J||Evident|Obvious;V||Exaggerate|Overstate;V||Exceed|Surpass;V||Exclude|Omit;V||Exhibit|Display;V||Expand|Broaden;J||Explicit|Clear;V||Exploit|Utilize;V||Facilitate|Ease;J||Feasible|Practical;V||Fluctuate|Vary;J||Fundamental|Basic;V||Generate|Produce;J||Genuine|Authentic;N||Hypothesis|Proposition;V||Identify|Recognize;V||Illustrate|Exemplify;V||Imply|Suggest;V||Incorporate|Include;V||Indicate|Show;J||Inevitable|Unavoidable;V||Infer|Deduce;J||Inherent|Intrinsic;J||Initial|Preliminary;J||Innovative|Original;N||Insight|Understanding;V||Integrate|Combine;V||Interpret|Explain;J||Intricate|Complex;V||Isolate|Separate;V||Justify|Defend;V||Maintain|Preserve;V||Manifest|Reveal;J||Marginal|Minor;J||Methodical|Systematic;V||Mimic|Imitate;V||Modify|Alter;J||Notable|Remarkable;N||Notion|Concept;J||Novel|New;V||Obtain|Acquire;J||Obvious|Apparent;V||Occur|Happen;V||Omit|Exclude;V||Perceive|Recognize;V||Persist|Continue;J||Plausible|Believable;V||Portray|Depict;V||Precede|Come before;J||Predominant|Main;J||Preliminary|Initial;V||Preserve|Maintain;V||Prevail|Triumph;J||Prominent|Notable;V||Promote|Encourage;V||Propose|Suggest;V||Provoke|Trigger;V||Qualify|Modify;J||Radical|Extreme;J||Rational|Logical;V||Refine|Improve;V||Reinforce|Strengthen;V||Reject|Dismiss;J||Relevant|Pertinent;J||Reluctant|Unwilling;J||Remarkable|Extraordinary;V||Require|Necessitate;V||Resemble|Be similar to;V||Resolve|Settle;V||Restrict|Limit;V||Retain|Keep;V||Reveal|Disclose;J||Rigid|Inflexible;J||Significant|Important;J||Simultaneous|Concurrent;J||Skeptical|Doubtful;R||Solely|Exclusively;J||Stable|Steady;J||Substantial|Considerable;V||Substitute|Replace;J||Subtle|Delicate;J||Sufficient|Adequate;V||Supplement|Complement;V||Surpass|Exceed;V||Sustain|Maintain;V||Symbolize|Represent;N||Tendency|Inclination;J||Tentative|Provisional;J||Theoretical|Abstract;J||Thorough|Comprehensive;V||Transform|Convert;J||Transparent|Clear;V||Undermine|Weaken;J||Underlying|Fundamental;J||Unique|Distinctive;V||Utilize|Employ;J||Valid|Sound;V||Vary|Differ;V||Verify|Confirm;J||Viable|Feasible;J||Widespread|Prevalent;V||Abandon|Forsake;V||Accelerate|Hasten;V||Accumulate|Gather;J||Adverse|Unfavorable;V||Alleviate|Relieve;V||Alter|Change;J||Analogous|Comparable;V||Anticipate|Expect;J||Arbitrary|Random;J||Assertive|Confident;V||Attenuate|Weaken;V||Consolidate|Unify;J||Candid|Frank;V||Coexist|Co-occur;V||Compensate|Offset;V||Complement|Enhance;J||Conspicuous|Noticeable;V||Deteriorate|Worsen;V||Dispel|Eliminate;V||Exacerbate|Worsen;V||Mitigate|Alleviate;V||Substantiate|Validate";
+var T=RAW.split(";").map(function(r){var p=r.split("|");return{c:p[0],t:p[1]?p[1].split(","):[],en:p[2],tr:p[3]}}).filter(function(x){return x.en&&x.tr});
 var $=function(i){return document.getElementById(i)};
 function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
 function show(tab){var f=tab==="fc";$("fc-s").classList.toggle("hide",!f);$("qz-s").classList.toggle("hide",f);$("t-fc").setAttribute("aria-selected",f);$("t-qz").setAttribute("aria-selected",!f);if(!f&&!quiz)startQuiz()}
@@ -83,11 +83,9 @@ $("t-fc").onclick=function(){show("fc")};$("t-qz").onclick=function(){show("qz")
 var deck=T.slice(),ci=0,flipped=false;
 function drawCard(){var t=deck[ci],b=$("fc");
 $("fc-n").textContent=(ci+1)+" / "+deck.length;$("fc-b").style.width=((ci+1)/deck.length*100)+"%";
-if(!flipped){b.innerHTML='<div class="w"></div><div class="hint">Tanım için dokun</div>';b.firstChild.textContent=t.en}
-else{var syn=T.filter(function(x){return x.tr===t.tr&&x.en!==t.en&&x.g===t.g}).map(function(x){return x.en});
-b.innerHTML='<div class="tr"></div><div class="hint"></div><div class="syn"></div>';
-b.children[0].textContent=t.tr;b.children[1].textContent=t.en;
-b.children[2].textContent=syn.length?"Aynı anlam: "+syn.join(", "):""}}
+if(!flipped){b.innerHTML='<div class="w"></div><div class="hint">Tap to view meaning</div>';b.firstChild.textContent=t.en}
+else{b.innerHTML='<div class="tr"></div><div class="hint"></div>';
+b.children[0].textContent=t.tr;b.children[1].textContent=t.en;}}
 function move(d){ci=(ci+d+deck.length)%deck.length;flipped=false;drawCard()}
 $("fc").onclick=function(){flipped=!flipped;drawCard()};
 $("prev").onclick=function(){move(-1)};$("next").onclick=function(){move(1)};
@@ -96,29 +94,27 @@ document.addEventListener("keydown",function(e){if($("fc-s").classList.contains(
 if(e.key==="ArrowRight")move(1);else if(e.key==="ArrowLeft")move(-1);else if(e.key===" "&&document.activeElement.tagName!=="BUTTON"){e.preventDefault();flipped=!flipped;drawCard()}});
 drawCard();
 
-/* Quiz: distractors come from other meaning groups of the same word type, never neighbouring groups */
+/* Quiz */
 var quiz=null;
 function uniqTr(list){var u=[],k={};shuffle(list).forEach(function(x){if(!k[x.tr]){k[x.tr]=1;u.push(x.tr)}});return u}
-function shares(a,b){return a.some(function(g){return b.indexOf(g)>=0})}
 function makeQ(t){
-var d=uniqTr(T.filter(function(x){return x.c===t.c&&x.tr!==t.tr&&!shares(t.t,x.t)}));
-var FB={S:"V",R:"J"};
-if(d.length<3){d=d.concat(uniqTr(T.filter(function(x){return x.c===(FB[t.c]||"J")&&x.tr!==t.tr&&!shares(t.t,x.t)&&d.indexOf(x.tr)<0})))}
+var d=uniqTr(T.filter(function(x){return x.c===t.c&&x.tr!==t.tr}));
+if(d.length<3){d=d.concat(uniqTr(T.filter(function(x){return x.tr!==t.tr&&d.indexOf(x.tr)<0})))}
 return{en:t.en,ans:t.tr,opts:shuffle([t.tr].concat(d.slice(0,3)))}}
 function startQuiz(){quiz={qs:shuffle(T).slice(0,30).map(makeQ),i:0,score:0,miss:[],done:false};drawQ()}
 function drawQ(){var q=quiz,root=$("qz");
 if(q.i>=q.qs.length){var m=q.miss.map(function(x){return"<div><b>"+x.en+"</b> = "+x.ans+"</div>"}).join("");
-root.innerHTML='<div class="res"><div>Sonuç</div><div class="score">'+q.score+' / '+q.qs.length+'</div>'+(q.miss.length?'<div>Yanlış yaptıkların</div><div class="miss">'+m+'</div>':'<div>Hepsi doğru!</div>')+'<div class="row"><button class="btn" id="again">Yeni 30 soru</button><button class="btn p" id="tofc">Kartlara dön</button></div></div>';
+root.innerHTML='<div class="res"><div>Results</div><div class="score">'+q.score+' / '+q.qs.length+'</div>'+(q.miss.length?'<div>Missed words</div><div class="miss">'+m+'</div>':'<div>All correct!</div>')+'<div class="row"><button class="btn" id="again">New 30 questions</button><button class="btn p" id="tofc">Back to cards</button></div></div>';
 $("again").onclick=startQuiz;$("tofc").onclick=function(){show("fc")};return}
 var cur=q.qs[q.i];
-root.innerHTML='<div class="meta"><span>Soru '+(q.i+1)+' / '+q.qs.length+'</span><span>Doğru: '+q.score+'</span></div><div class="bar"><i style="width:'+(q.i/q.qs.length*100)+'%"></i></div><div class="q"></div><div class="opts"></div><div class="fb" aria-live="polite"></div><div class="row hide" id="nx"><button class="btn p" id="nxb"></button></div>';
+root.innerHTML='<div class="meta"><span>Question '+(q.i+1)+' / '+q.qs.length+'</span><span>Score: '+q.score+'</span></div><div class="bar"><i style="width:'+(q.i/q.qs.length*100)+'%"></i></div><div class="q"></div><div class="opts"></div><div class="fb" aria-live="polite"></div><div class="row hide" id="nx"><button class="btn p" id="nxb"></button></div>';
 root.querySelector(".q").textContent=cur.en;
 var box=root.querySelector(".opts");
 cur.opts.forEach(function(o){var b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=function(){pick(b,o)};box.appendChild(b)})}
 function pick(btn,o){var q=quiz,cur=q.qs[q.i],all=document.querySelectorAll(".opt"),fb=document.querySelector(".fb");
 all.forEach(function(b){b.disabled=true;if(b.textContent===cur.ans)b.classList.add("ok")});
-if(o===cur.ans){q.score++;fb.textContent="Doğru!"}else{btn.classList.add("bad");q.miss.push(cur);fb.textContent="Doğru cevap: "+cur.ans}
-var last=q.i===q.qs.length-1;$("nx").classList.remove("hide");$("nxb").textContent=last?"Sonucu gör":"Sonraki soru";
+if(o===cur.ans){q.score++;fb.textContent="Correct!"}else{btn.classList.add("bad");q.miss.push(cur);fb.textContent="Correct answer: "+cur.ans}
+var last=q.i===q.qs.length-1;$("nx").classList.remove("hide");$("nxb").textContent=last?"See results":"Next question";
 $("nxb").onclick=function(){q.i++;drawQ()};$("nxb").focus()}
 </script>
 </body>
