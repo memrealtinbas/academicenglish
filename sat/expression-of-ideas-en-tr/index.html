@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAT Expression of Ideas (EN–TR)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f4f7;--card:#fff;--ink:#222b36;--mute:#697685;--line:#d6dce3;--acc:#41586f;--accink:#fff;--ok:#2f7d5b;--okbg:#e5f3ec;--bad:#a8483c;--badbg:#f7e7e4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}}
+:root[data-theme="dark"]{--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.5rem;font-weight:800;margin:4px 0 14px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs button{flex:1;padding:11px;border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:.9rem;margin-bottom:8px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .2s}
+.fc{width:100%;min-height:240px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:24px;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+.fc .w{font-size:2.2rem;font-weight:800}
+.fc .tr{font-size:2rem;font-weight:800;color:var(--acc)}
+.fc .hint,.fc .syn{color:var(--mute);font-size:.95rem}
+.row{display:flex;gap:8px;margin-top:14px}
+.btn{flex:1;padding:12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+.q{font-size:2rem;font-weight:800;text-align:center;margin:10px 0 20px}
+.opts{display:grid;gap:10px}
+.opt{padding:14px 16px;text-align:left;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:1.05rem;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{margin-top:14px;min-height:24px;font-weight:600}
+.res{text-align:center}
+.score{font-size:3rem;font-weight:800;color:var(--acc);margin:8px 0}
+.miss{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:6px 16px;margin:16px 0;max-height:
