@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TOEFL TPT 3 (EN–TR)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f4f7;--card:#fff;--ink:#222b36;--mute:#697685;--line:#d6dce3;--acc:#41586f;--accink:#fff;--ok:#2f7d5b;--okbg:#e5f3ec;--bad:#a8483c;--badbg:#f7e7e4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}}
+:root[data-theme="dark"]{--bg:#171b20;--card:#1f252c;--ink:#e8ecf0;--mute:#98a3ae;--line:#343d47;--acc:#9bb5cc;--accink:#10202e;--ok:#7cc9a0;--okbg:#1c3328;--bad:#e59a8f;--badbg:#3a2420}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.5rem;font-weight:800;margin:4px 0 14px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs button{flex:1;padding:11px;border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:.9rem;margin-bottom:8px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .2s}
+.fc{width:100%;min-height:240px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:24px;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+.fc .w{font-size:2.2rem;font-weight:800}
+.fc .tr{font-size:2rem;font-weight:800;color:var(--acc)}
+.fc .hint,.fc .syn{color:var(--mute);font-size:.95rem}
+.row{display:flex;gap:8px;margin-top:14px}
+.btn{flex:1;padding:12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--accink)}
+.q{font-size:2rem;font-weight:800;text-align:center;margin:10px 0 20px}
+.opts{display:grid;gap:10px}
+.opt{padding:14px 16px;text-align:left;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:1.05rem;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{margin-top:14px;min-height:24px;font-weight:600}
+.res{text-align:center}
+.score{font-size:3rem;font-weight:800;color:var(--acc);margin:8px 0}
+.miss{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:6px 16px;margin:16px 0;max-height:320px;overflow-y:auto}
+.miss div{padding:8px 0;border-bottom:1px solid var(--line)}
+.miss div:last-child{border:0}
+.back{display:inline-block;margin-bottom:6px;color:var(--acc);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../">‹ TOEFL</a>
+<h1>TOEFL TPT 3 (EN–TR)</h1>
+<div class="tabs" role="tablist">
+<button role="tab" id="t-fc" aria-selected="true">Kartlar (204)</button>
+<button role="tab" id="t-qz" aria-selected="false">Test (30 soru)</button>
+</div>
+
+<section id="fc-s">
+<div class="meta"><span id="fc-n"></span><span>Çevirmek için dokun · ← → ile gez</span></div>
+<div class="bar"><i id="fc-b"></i></div>
+<button class="fc" id="fc" aria-live="polite"></button>
+<div class="row">
+<button class="btn" id="prev">Önceki</button>
+<button class="btn" id="shuf">Karıştır</button>
+<button class="btn p" id="next">Sonraki</button>
+</div>
+<div class="row"><button class="btn p" id="go-q">Teste geç</button></div>
+</section>
+
+<section id="qz-s" class="hide">
+<div id="qz"></div>
+</section>
+</main>
+<script>
+var RAW="N|cons|Conservation|Koruma;J|env|Endangered|Nesli tükenme tehlikesi altında;N||Activities|Faaliyetler;N|env,cons,pro|Conservationists|Doğa korumacılar;N||Creatures|Canlılar;V|know|Educate|Eğitmek;N||Importance|Önem;P|save|Preserving|Koruma;N|env|Ecosystems|Ekosistemler;V|know|Understand|Anlamak;N||Threats|Tehditler;V|keep|Ensure|Güvence altına almak;N||Generations|Nesiller;N||Facility|Tesis;N||Apartment|Daire;P||Designated|Belirlenmiş;J|calm|Peaceful|Huzurlu;N|env|Environment|Çevre;N||Patrons|Müşteriler;V||Adhere|Uymak;N|rule|Guidelines|Yönergeler;P||Refraining|Kaçınma;N||Conversations|Sohbetler;J||Electronic|Elektronik;V|mgmt|Conduct|Yürütmek;V|chg|Proceed|İlerlemek;J|calm|Serene|Sakin;N||Cooperation|İş birliği;V|keep|Maintain|Sürdürmek;P|judge|Concluded|Sonuçlandırılmış;N|force|Dynamics|Dinamikler;J||Fast-moving|Hızlı hareket eden;N|wx,env|Atmosphere|Atmosfer;J|geo|Global|Küresel;N||Contrast|Farklılık;N|wx|Temperatures|Sıcaklıklar;J|clim,geo|Polar|Kutup bölgesine ait;J|clim,geo|Tropical|Tropikal;N|force,wx|Pressure|Basınç;V||Generate|Üretmek;N|area|Hemisphere|Yarımküre;N|area,wx|Latitudes|Enlemler;N|wx|Cyclones|Siklonlar;N|wx,force|Anticyclones|Antisiklonlar;N|wx|Precipitation|Yağış;N||Rotation|Dönme;J|steady|Uneven|Düzensiz;J||Seasonal|Mevsimsel;N|wx,pro|Meteorologists|Meteorologlar;V||Predict|Tahmin etmek;N|wx|Climate|İklim;S|chg|Impacts|Etkiler;P||Warming|Isınma;S|less|Reduces|Azaltır;N||Masses|Kütleler;V|less|Weaken|Zayıflatmak;P||Prolonged|Uzun süreli;J|sev|Extreme|Aşırı;N|wx|Heatwaves|Sıcak hava dalgaları;N|wx|Rainfall|Yağış;N|trade|Economics|İktisat;N||Societies|Toplumlar;V|mgmt|Allocate|Tahsis etmek;N|alloc,money|Resources|Kaynaklar;N|prod|Production|Üretim;N|alloc|Distribution|Dağıtım;N|prod|Consumption|Tüketim;S|know|Examines|İnceler;N||Governments|Hükümetler;N|trade|Businesses|İşletmeler;N||Individuals|Bireyler;N|trade|Marketplace|Pazar;V|goal|Aspire|Amaçlamak;N|fin,pro|Economists|Ekonomistler;N|fin,pro|Bankers|Bankacılar;P|get|Gaining|Kazanma;N|idea|Concepts|Kavramlar;N|alloc,sd|Supply|Arz;N|sd|Demand|Talep;N||Inflation|Enflasyon;N|work|Employment|İstihdam;N|money|Benefits|Faydalar;J|mind|Informed|Bilgili;N|force|Forces|Güçler;J||Dedicated|Adanmış;N||Volunteers|Gönüllüler;N|work,rule|Responsibilities|Sorumluluklar;P|handle|Supervising|Denetleme;N||Demonstrations|Gösterimler;N|sched|Deadline|Son tarih;N|hist|Background|Geçmiş;P|judge|Accepted|Kabul edilmiş;J|lead|Dominant|Baskın;P|judge|Considered|Kabul edilen;N|hist|Era|Dönem;P|judge|Marked|Nitelendirilen;J|lead|Groundbreaking|Çığır açan;P||Experimented|Deney yaptı;N|design|Formats|Biçimler;N|method|Techniques|Teknikler;N|media|Anthology|Antoloji;N|media|Episode|Bölüm;N|media|Narratives|Anlatılar;J|lead|Influential|Etkili;P|change|Blended|Birleştirilmiş;P|up|Provoking|Uyandıran;N||Phenomenon|Olgu;P|handle|Tackled|Ele alınmış;P||Including|İçeren;N||Gender|Cinsiyet;N|media|Broadcasts|Yayınlar;N|media|Coverage|Kapsam;N||Entertainers|Eğlence sanatçıları;P|handle|Navigated|Yönetti;N|adv|Innovation|Yenilik;J||Commercial|Ticari;N|force|Pressures|Baskılar;V|goal|Seek|Aramak;V|attract|Appeal|Cazip gelmek;P||Clashed|Çatıştı;N|idea|Visions|Vizyonlar;J|steady|Indelible|Kalıcı;N|rule|Standards|Standartlar;N|media,sched|Programming|Yayın programcılığı;P|part|Contributing|Katkıda bulunma;N|adv|Evolution|Evrim;N|brain|Neuroplasticity|Beyin esnekliği;V|chg|Reorganize|Yeniden düzenlemek;P|make|Forming|Oluşturma;N|link|Connections|Bağlantılar;R||Throughout|Boyunca;V|chg|Adapt|Uyum sağlamak;N|react|Response|Tepki;N|react|Stimulation|Uyarım;J|lead|Remarkable|Dikkat çekici;N||Capacity|Kapasite;J|imp|Crucial|Kritik;J|mind|Cognitive|Bilişsel;N||Acquisition|Kazanım;J||Structural|Yapısal;N|brain|Neurons|Nöronlar;P|up|Strengthening|Güçlendirme;N|brain,link|Synapses|Sinapslar;J||Functional|İşlevsel;N|design|Patterns|Örüntüler;P||Underperforming|Düşük performans gösteren;N|area|Regions|Bölgeler;P|handle|Processing|İşleme;J|geo|Distant|Uzak;P|part|Engaging|Katılım sağlayan;N|pro|Training|Eğitim;V|chg|Enhance|Geliştirmek;J||Aerobic|Aerobik;P|up|Boosting|Artırma;N|bio,cons|Protein|Protein;N|enz|Fertilizer|Gübre;N||Implications|Sonuçlar;N|method|Strategies|Stratejiler;V|attract,chg|Promote|Teşvik etmek;N|vigor|Resilience|Dayanıklılık;P||Leveraging|Yararlanma;N|pro|Practitioners|Uygulayıcılar;N|vigor|Vitality|Canlılık;P|save|Composting|Kompostlama;N|cont|Bins|Kutular;N|cont|Receptacles|Kaplar;J||Uneaten|Yenmemiş;N|mat|Contents|İçerik;P|get|Collected|Toplanmış;N||Agriculture|Tarım;P|change|Transforming|Dönüştürme;N|method|Process|Süreç;J|env|Sustainable|Sürdürülebilir;N|enz|Catalysts|Katalizörler;N|mat|Substances|Maddeler;N|react|Reactions|Tepkimeler;R||Efficiently|Verimli biçimde;J|steady|Unchanged|Değişmemiş;J||Multiple|Çok sayıda;N|enz|Enzymes|Enzimler;N|bio|Digestion|Sindirim;N|bio,method|Metabolism|Metabolizma;N|trade|Industry|Endüstri;J|imp|Essential|Temel;N||Fuels|Yakıtlar;J||Powerful|Güçlü;V|less|Lower|Azaltmak;N|mat|Ingredients|Bileşenler;N|enz|Nanozymes|Nanoenzimler;J|man|Artificial|Yapay;V||Mimic|Taklit etmek;J|steady|Stable|Kararlı;J|sev|Harsh|Sert;N|env|Conditions|Koşullar;N||Acidity|Asitlik;J||Cheaper|Daha ucuz;P|change|Tailored|Özelleştirilmiş;N|tox|Pollutants|Kirleticiler;J|man|Industrial|Endüstriyel;N|tox|Waste|Atık;N|tox|Pesticides|Pestisitler;N||Dyes|Boyalar;N|mat|Metals|Metaller;J|env|Toxic|Zehirli";
+var T=RAW.split(";").map(function(r){var p=r.split("|");return{c:p[0],t:p[1]?p[1].split(","):[],en:p[2],tr:p[3]}};
+var $=function(i){return document.getElementById(i)};
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function show(tab){var f=tab==="fc";$("fc-s").classList.toggle("hide",!f);$("qz-s").classList.toggle("hide",f);$("t-fc").setAttribute("aria-selected",f);$("t-qz").setAttribute("aria-selected",!f);if(!f&&!quiz)startQuiz()}
+$("t-fc").onclick=function(){show("fc")};$("t-qz").onclick=function(){show("qz")};$("go-q").onclick=function(){show("qz")};
+
+/* Flashcards */
+var deck=T.slice(),ci=0,flipped=false;
+function drawCard(){var t=deck[ci],b=$("fc");
+$("fc-n").textContent=(ci+1)+" / "+deck.length;$("fc-b").style.width=((ci+1)/deck.length*100)+"%";
+if(!flipped){b.innerHTML='<div class="w"></div><div class="hint">Tanım için dokun</div>';b.firstChild.textContent=t.en}
+else{var syn=T.filter(function(x){return x.tr===t.tr&&x.en!==t.en&&x.g===t.g}).map(function(x){return x.en});
+b.innerHTML='<div class="tr"></div><div class="hint"></div><div class="syn"></div>';
+b.children[0].textContent=t.tr;b.children[1].textContent=t.en;
+b.children[2].textContent=syn.length?"Aynı anlam: "+syn.join(", "):""}}
+function move(d){ci=(ci+d+deck.length)%deck.length;flipped=false;drawCard()}
+$("fc").onclick=function(){flipped=!flipped;drawCard()};
+$("prev").onclick=function(){move(-1)};$("next").onclick=function(){move(1)};
+$("shuf").onclick=function(){deck=shuffle(T);ci=0;flipped=false;drawCard()};
+document.addEventListener("keydown",function(e){if($("fc-s").classList.contains("hide"))return;
+if(e.key==="ArrowRight")move(1);else if(e.key==="ArrowLeft")move(-1);else if(e.key===" "&&document.activeElement.tagName!=="BUTTON"){e.preventDefault();flipped=!flipped;drawCard()}});
+drawCard();
+
+/* Quiz: distractors come from other meaning groups of the same word type, never neighbouring groups */
+var quiz=null;
+function uniqTr(list){var u=[],k={};shuffle(list).forEach(function(x){if(!k[x.tr]){k[x.tr]=1;u.push(x.tr)}});return u}
+function shares(a,b){return a.some(function(g){return b.indexOf(g)>=0})}
+function makeQ(t){
+var d=uniqTr(T.filter(function(x){return x.c===t.c&&x.tr!==t.tr&&!shares(t.t,x.t)}));
+var FB={S:"V",R:"J"};
+if(d.length<3){d=d.concat(uniqTr(T.filter(function(x){return x.c===(FB[t.c]||"J")&&x.tr!==t.tr&&!shares(t.t,x.t)&&d.indexOf(x.tr)<0})))}
+return{en:t.en,ans:t.tr,opts:shuffle([t.tr].concat(d.slice(0,3)))}}
+function startQuiz(){quiz={qs:shuffle(T).slice(0,30).map(makeQ),i:0,score:0,miss:[],done:false};drawQ()}
+function drawQ(){var q=quiz,root=$("qz");
+if(q.i>=q.qs.length){var m=q.miss.map(function(x){return"<div><b>"+x.en+"</b> = "+x.ans+"</div>"}).join("");
+root.innerHTML='<div class="res"><div>Sonuç</div><div class="score">'+q.score+' / '+q.qs.length+'</div>'+(q.miss.length?'<div>Yanlış yaptıkların</div><div class="miss">'+m+'</div>':'<div>Hepsi doğru!</div>')+'<div class="row"><button class="btn" id="again">Yeni 30 soru</button><button class="btn p" id="tofc">Kartlara dön</button></div></div>';
+$("again").onclick=startQuiz;$("tofc").onclick=function(){show("fc")};return}
+var cur=q.qs[q.i];
+root.innerHTML='<div class="meta"><span>Soru '+(q.i+1)+' / '+q.qs.length+'</span><span>Doğru: '+q.score+'</span></div><div class="bar"><i style="width:'+(q.i/q.qs.length*100)+'%"></i></div><div class="q"></div><div class="opts"></div><div class="fb" aria-live="polite"></div><div class="row hide" id="nx"><button class="btn p" id="nxb"></button></div>';
+root.querySelector(".q").textContent=cur.en;
+var box=root.querySelector(".opts");
+cur.opts.forEach(function(o){var b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=function(){pick(b,o)};box.appendChild(b)})}
+function pick(btn,o){var q=quiz,cur=q.qs[q.i],all=document.querySelectorAll(".opt"),fb=document.querySelector(".fb");
+all.forEach(function(b){b.disabled=true;if(b.textContent===cur.ans)b.classList.add("ok")});
+if(o===cur.ans){q.score++;fb.textContent="Doğru!"}else{btn.classList.add("bad");q.miss.push(cur);fb.textContent="Doğru cevap: "+cur.ans}
+var last=q.i===q.qs.length-1;$("nx").classList.remove("hide");$("nxb").textContent=last?"Sonucu gör":"Sonraki soru";
+$("nxb").onclick=function(){q.i++;drawQ()};$("nxb").focus()}
+</script>
+</body>
+</html>
